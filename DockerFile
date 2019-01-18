@@ -1,0 +1,5 @@
+FROM java:8
+EXPOSE 8080
+ADD migrosorderservice.jar migrosorderservice.jar
+RUN bash -c 'touch /migrosorderservice.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","--spring.config.location=classpath:${configDirectory}","-Dspring.profiles.active=container","-jar","/migrosorderservice.jar"]
